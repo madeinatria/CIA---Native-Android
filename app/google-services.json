@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "127590007038",
+    "firebase_url": "https://ciafirebaseproject-78e94.firebaseio.com",
+    "project_id": "ciafirebaseproject-78e94",
+    "storage_bucket": "ciafirebaseproject-78e94.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127590007038:android:8d9aba529cc5156d",
+        "android_client_info": {
+          "package_name": "atria.communities.cia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "127590007038-pfubq3af2avifl8flg2pmoc8sbikata7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "atria.communities.cia",
+            "certificate_hash": "879c65044d2ade9dad1e5413c5519c24de64e835"
+          }
+        },
+        {
+          "client_id": "127590007038-0qj2ha1ngq7ocb23bcggo419b0b3a8ov.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2eNp0vnlD6lo6KxUBRaj_2lecFvyCArw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "127590007038-0qj2ha1ngq7ocb23bcggo419b0b3a8ov.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

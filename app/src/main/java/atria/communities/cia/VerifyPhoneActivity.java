@@ -181,7 +181,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                     userdata.put("dispalyname", user.getDisplayName());
                     userdata.put("email", user.getEmail());
                     userdata.put("phonenumber", user.getPhoneNumber());
-                    userdata.put("photourl",user.getPhotoUrl());
+                   // userdata.put("photourl",user.getPhotoUrl());
 
 
 

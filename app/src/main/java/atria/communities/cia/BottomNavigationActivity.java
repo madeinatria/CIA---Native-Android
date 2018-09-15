@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import atria.communities.cia.fragments.HomeFinalFragment;
 import atria.communities.cia.fragments.HomeFragmentv3;
+import atria.communities.cia.fragments.MyFragment;
 import atria.communities.cia.fragments.ProfileFragmentv;
 import atria.communities.cia.fragments.ScheduleFragmentv;
 
@@ -65,7 +66,7 @@ public class BottomNavigationActivity extends AppCompatActivity {
 
         ////////////////
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new HomeFragmentv3()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new HomeFinalFragment()).commit();
         navigationView.getMenu().getItem(0).setChecked(true);
         if (getSupportFragmentManager().findFragmentById(R.id.frame_layout)==null){
             navigationView.getMenu().getItem(0).setChecked(true);
@@ -117,6 +118,13 @@ public class BottomNavigationActivity extends AppCompatActivity {
                     ProfileFragmentv favFragment = new ProfileFragmentv();
                     openFragment(favFragment);
                     break;
+
+
+                case R.id.navigaion_notiftions:
+                    MyFragment myFragment = new MyFragment();
+                    openFragment(myFragment);
+                    break;
+
                 /*case R.id.navigation_profile:
                   *//*  ProfileFragment frg12 = new ProfileFragment ();
                     openFragment(frg12);*//*

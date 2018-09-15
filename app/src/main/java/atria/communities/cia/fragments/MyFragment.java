@@ -2,33 +2,26 @@ package atria.communities.cia.fragments;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.AdapterView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.gson.JsonObject;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,8 +29,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import atria.communities.cia.EventAdapter;
-import atria.communities.cia.EventModel;
+import atria.communities.cia.GodModeActivity;
 import atria.communities.cia.R;
 import atria.communities.cia.ReportAdapter;
 import atria.communities.cia.ReportModel;
@@ -48,60 +40,71 @@ import static android.app.Activity.RESULT_OK;
  * Created by suryamurugan on 4/4/18.
  */
 
-public class HomeFinalFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class MyFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    ProgressBar progressBar;
-
+    // Access a Cloud Firestore instance from your Activity
 
     FirebaseFirestore db;
     private static RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
-    private static ArrayList<EventModel> data;
+    private static ArrayList<ReportModel> data;
 
-    FirebaseAuth auth;
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.home_final_fragmentv3,null);
+        return inflater.inflate(R.layout.myfragment,null);
     }
 
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        progressBar = view.findViewById(R.id.progressbar);
+        Button godmode = view.findViewById(R.id.godmode);
+        godmode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(),GodModeActivity.class));
+            }
+        });
 
-        progressBar.setVisibility(View.VISIBLE);
-        data = new ArrayList<EventModel>();
 
+
+      /*  data = new ArrayList<ReportModel>();
         db = FirebaseFirestore.getInstance();
-
-        FirebaseMessaging.getInstance().subscribeToTopic("all");
-
-
         // Toast.makeText(VerifyPhoneActivity.this, ""+account.getToken(), Toast.LENGTH_SHORT).show();
         FirebaseAuth mAuth;
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
 
-        TextView displaname;
-        displaname = view.findViewById(R.id.displayname);
-        displaname.setText("Hi, "+user.getDisplayName());
-
-        final JsonObject jsonObject = new JsonObject();
+       // user.updatePhoneNumber(credential);
 
 
+        // Create a new user with a first and last name
+        Map<String, Object> userdata = new HashMap<>();
+        userdata.put("uid",user.getUid());
+        userdata.put("dispalyname", user.getDisplayName());
+        userdata.put("email", user.getEmail());
+        userdata.put("phonenumber", user.getPhoneNumber());
+       // userdata.put("photourl",user.getPhotoUrl());
 
-    /*    db.collection("users").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
+
+
+// Add a new document with a generated ID
+        db.collection("users")
+                .document(user.getUid()).set(userdata).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                Toast.makeText(getContext(), ""+task.getResult().getData().get("Register"), Toast.LENGTH_SHORT).show();
+            public void onSuccess(Void aVoid) {
+
+                Toast.makeText(getContext(), "added", Toast.LENGTH_SHORT).show();
+
             }
         });
-*/
+
 
         db.collection("events").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -110,36 +113,16 @@ public class HomeFinalFragment extends Fragment implements AdapterView.OnItemSel
                 String data2="";
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        //    Log.d(TAG, document.getId() + " => " + document.getData());
-                        //  data = data+ document.getId() + " => " + document.getData();
-
-
- //public EventModel(String eventid, String eventtitle, String eventshortdescription, String domainid,
-                        // String eventlocation, String eventhost, String eventdescription,
-                        // String eventduration, String eventprerequisite, String eventbenefits,
-                        // String eventcontactnumber, Timestamp eventtimestamp) {
-                        data.add(new EventModel(document.getString("eventid"),
-                                document.getString("eventtitle"),
-                                document.getString("eventshortdescription"),
-                                document.getString("domainid"),
-                                document.getString("eventlocation"),
-                                document.getString("eventhost"),
-                                document.getString("eventdescription"),
-                                document.getString("eventduration"),
-                                document.getString("eventprerequisite"),
-                                document.getString("eventbenefi" +
-                                        "ts"),
-                                document.getString("eventcontactnumber"),
-                                document.getTimestamp("eventtimestamp")));
+                    //    Log.d(TAG, document.getId() + " => " + document.getData());
+                          //  data = data+ document.getId() + " => " + document.getData();
 
 
 
+                        data.add(new ReportModel("", document.getString("title"),document.getString("content"),document.getString("timestamp")));
 
-                        //Log.d(TAG, document.getId() + " => " + i + document.getString("problem")+" "+document.getString("Reported to") +" " +document.getString("village"));
+   //Log.d(TAG, document.getId() + " => " + i + document.getString("problem")+" "+document.getString("Reported to") +" " +document.getString("village"));
 
-                        //
-
-                        progressBar.setVisibility(View.INVISIBLE);
+                   //
 
                     }
 
@@ -153,20 +136,17 @@ public class HomeFinalFragment extends Fragment implements AdapterView.OnItemSel
                     recyclerView.setLayoutManager(layoutManager);
                     recyclerView.setItemAnimator(new DefaultItemAnimator());
                     Context mcontext = getContext();
-                    adapter = new EventAdapter(data, mcontext);
+                    adapter = new ReportAdapter(data, mcontext);
                     recyclerView.setAdapter(adapter);
 
 
 
                 } else {
-                    //  Log.w(TAG, "Error getting documents.", task.getException());
+                  //  Log.w(TAG, "Error getting documents.", task.getException());
                 }
-                // Toast.makeText(getContext(), data, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getContext(), data, Toast.LENGTH_SHORT).show();
             }
-        });
-
-
-
+        });*/
 
     }
 

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewEventActivity">
+    <ScrollView
+        android:layout_gravity=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="200dp">
+
+            <TextView
+                android:id="@+id/eventdoaminid"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Domain : Web Developement"/>
+
+            <Spinner
+                android:id="@+id/spinneritem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/eventtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:hint="Your Event Name"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <TableLayout
+
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:id="@+id/date">
+
+                    <ImageView
+                        android:padding="4dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:src="@drawable/ic_calendar"/>
+                    <TextView
+                        android:id="@+id/eventtimestamp"
+                        android:textSize="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Time: 3:30 PM"/>
+
+                </TableRow>
+
+                <TableRow>
+                    <ImageView
+                        android:padding="4dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:src="@drawable/ic_calendar"/>
+                    <EditText
+                        android:id="@+id/eventlocation"
+                        android:textSize="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:hint="Your Event Location"/>
+
+                </TableRow>
+                <TableRow>
+                    <ImageView
+                        android:padding="4dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:src="@drawable/ic_calendar"/>
+                    <EditText
+                        android:linksClickable="true"
+                        android:id="@+id/eventhost"
+                        android:textSize="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:hint="Event Hosted by"/>
+
+                </TableRow>
+            </TableLayout>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Description:"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/eventdescription"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:textSize="15dp"
+                android:hint="Some Description of your event which can be of several lines"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Duration"/>
+
+            <EditText
+                android:id="@+id/eventduration"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:hint="FOR FEW HOURS"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Pre-Requisites"/>
+
+            <EditText
+                android:id="@+id/eventprerequsites"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="15dp"
+                android:hint="Some PreRequisites of the event"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Benefits"/>
+
+            <EditText
+                android:id="@+id/eventbenefits"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:hint="Benifits of attending the event"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Contact"/>
+
+            <EditText
+                android:id="@+id/eventcontactnumber"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:hint="Your Contact Number"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
+
+
+
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <Button
+        android:layout_gravity="bottom"
+        android:id="@+id/saveorupdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save/Update"
+        android:textStyle="bold"
+        android:background="@color/black"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
